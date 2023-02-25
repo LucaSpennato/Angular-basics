@@ -1,0 +1,33 @@
+<div class="row mt-5">
+
+    <div class="col-2">
+        <button class="btn btn-primary"
+        (click)="onShowDetails()"
+        >Display Details</button>
+    </div>
+
+    <div class="row col-12">
+        <div class="col-6 mt-3 border-top border-bottom"  >
+            <p *ngIf="passwordShow; else passwordHidden">
+                Secret Password = tuna
+            </p>
+            <ng-template #passwordHidden>
+                <p>
+                    ************************************
+                </p>
+            </ng-template>
+            <ul>
+                <li>
+                    Logs
+                </li>
+                <li *ngFor="let date of displayDetailsLogs; let i = index" 
+                    [ngStyle]="{backgroundColor: onFifthLogCheck(date, 'blue')}"
+                    [ngClass]="{tooMuchLogCheck: i > 5}"
+                    >
+                    <!-- [ngClass]="{tooMuchLogCheck: onFifthLogCheck(date)}" -->
+                    {{ date }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
